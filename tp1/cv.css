@@ -9,7 +9,7 @@ table {
 }
 
 body {
-  background: linear-gradient(to right, #ff0000, #0000ff);
+
   width: 800px;
   max-width: 100%;
   margin: 0 auto;
@@ -19,7 +19,7 @@ body {
 @media  (max-width: 600px) {
   body {
     font-size: 24px;
-    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+
 
   }
 }
@@ -31,16 +31,15 @@ table {
 }
 
 a:hover {
-  color: orange;
+  color: rgb(0, 0, 0);
   /* Couleur de texte au survol de la souris (par exemple, orange) */
-}
-
-tr:nth-child(odd) {
-  background-color: hsl(309, 16%, 53%);
-  /* Couleur de fond pour les lignes impaires (par exemple, gris clair) */
 }
 
 img:hover {
   transform: scale(1.5);
   /* Agrandissement de 20% (ajustez selon vos besoins) */
+}
+div{ margin-left: 5%;
+    margin-right: 5%;
+    background-color: rgb(226, 201, 201);
 }
