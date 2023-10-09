@@ -1,0 +1,46 @@
+table,
+th,
+td {
+  border: 1px solid;
+}
+
+table {
+  width: 100%;
+}
+
+body {
+  background: linear-gradient(to right, #ff0000, #0000ff);
+  width: 800px;
+  max-width: 100%;
+  margin: 0 auto;
+  font-size: 16px;
+}
+
+@media  (max-width: 600px) {
+  body {
+    font-size: 24px;
+    background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+
+  }
+}
+
+
+table {
+  background-color: white;
+  /* Couleur de fond blanche */
+}
+
+a:hover {
+  color: orange;
+  /* Couleur de texte au survol de la souris (par exemple, orange) */
+}
+
+tr:nth-child(odd) {
+  background-color: hsl(309, 16%, 53%);
+  /* Couleur de fond pour les lignes impaires (par exemple, gris clair) */
+}
+
+img:hover {
+  transform: scale(1.5);
+  /* Agrandissement de 20% (ajustez selon vos besoins) */
+}
