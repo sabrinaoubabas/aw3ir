@@ -1,0 +1,130 @@
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('monFormulaire');
+
+    form.addEventListener('submit', function (event) {
+        const name = document.getElementById('name').value;
+        const firstname = document.getElementById('firstname').value;
+        const address = document.getElementById('address').value;
+
+        if (name.length < 5) {
+            event.preventDefault();
+            alert('Le nom doit avoir au moins 5 caractères.');
+        }
+
+        if (firstname.length < 5) {
+            event.preventDefault(); 
+            alert('Le prénom doit avoir au moins 5 caractères.');
+        }
+
+        if (address.length < 5) {
+            event.preventDefault(); 
+            alert('L\'adresse doit avoir au moins 5 caractères.');
+        }
+    });
+});
+
+
+
+function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
+window.onload = function (event) {
+
+    console.log("DOM ready!");
+
+    document.getElementById('monFormulaire').addEventListener('submit', function (event) {
+        var nameInput = document.getElementById('name');
+        var nameError = document.getElementById('nameError');
+        var firstnameInput = document.getElementById('firstname');
+        var firstnameError = document.getElementById('firstnameError');
+        var addressInput = document.getElementById('address');
+        var addressError = document.getElementById('addressError');
+
+        if (nameInput.value.length < 5) {
+            nameError.innerHTML = 'Le nom doit avoir au moins 5 caractères.';
+            event.preventDefault(); // Prevent form submission
+        } else {
+            nameError.innerHTML = ''; // Clear error message
+        }
+
+        if (firstnameInput.value.length < 5) {
+            firstnameError.innerHTML = 'Le prénom doit avoir au moins 5 caractères.';
+            event.preventDefault(); // Prevent form submission
+        } else {
+            firstnameError.innerHTML = ''; // Clear error message
+        }
+
+        if (addressInput.value.length < 5) {
+            addressError.innerHTML = 'L\'adresse postale doit avoir au moins 5 caractères.';
+            event.preventDefault(); // Prevent form submission
+        } else {
+            addressError.innerHTML = ''; // Clear error message
+        }
+    });
+    /*
+        // recuperer les infos
+        const form = document.getElementById('monFormulaire');
+        const name = document.getElementById('name').value;
+        const firstname = document.getElementById('firstname').value;
+        const birthday = document.getElementById('birthday').value;
+        const address = document.getElementById('address').value;
+        const email = document.getElementById('email').value;
+    
+        // cibler le corps ou le titre
+        var modalbody = document.querySelector('.modal-body2');
+        var modaltitle = document.querySelector('.modal-title2');
+        //empecher la soumission par default
+        event.preventDefault();
+    
+    
+    }
+    
+    
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('monFormulaire');
+        const modal = new bootstrap.Modal(document.getElementById('myModal'));
+        const mapImage = document.getElementById('mapImage'); // Get the map image element
+    
+        form.addEventListener('submit', function (event) {
+            const name = document.getElementById('name').value;
+            const firstname = document.getElementById('firstname').value;
+            const birthday = document.getElementById('birthday').value;
+            const address = document.getElementById('address').value;
+            const email = document.getElementById('email').value;
+    
+            if (name === '' || firstname === '' || birthday === '' || address === '' || email === '') {
+                event.preventDefault(); // Prevent form submission
+                const modal = new bootstrap.Modal(document.getElementById('myModal'));
+                modal.show(); // Display the modal
+            } else {
+                console.log("E L S E!");
+                // If all fields are filled, display the map image
+                // mapImage.style.display = 'block';
+                //event.preventDefault();
+                var mapImage = document.createElement('img');
+                var mapURL = "https://maps.googleapis.com/maps/api/staticmap?center=" + encodeURIComponent(address)
+                    + "&markers=color:red%7Clabel:C%7C" + encodeURIComponent(address)
+                    + "&zoom=13&size=400x300&key=AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg";
+                mapImage.src = mapURL;
+                modalbody.appendChild(mapImage);
+                var modal = new bootstrap.Modal(document.getElementById('myModal'));
+                modal.show();
+            }
+    
+        });
+        
+    });
+    */
+
+    var mapImage = document.createElement('img');
+    var mapURL = "https://maps.googleapis.com/maps/api/staticmap?center=" + encodeURIComponent(address)
+        + "&markers=color:red%7Clabel:C%7C" + encodeURIComponent(address)
+        + "&zoom=13&size=400x300&key=AIzaSyAkmvI9DazzG9p77IShsz_Di7-5Qn7zkcg";
+    mapImage.src = mapURL;
+    modal.appendChild(mapImage);
+    var modal = new bootstrap.Modal(document.getElementById('myModal'));
+    modal.show();

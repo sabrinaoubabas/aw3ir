@@ -1,54 +1,176 @@
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>TP3</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>TP3</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <style>
-          body{
-              background-color: #e9ebee;              
-              font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-              font-size: 16px;
-              margin: 0 auto;
-              max-width: 800px;              
-          }
-        </style>
-        
-        <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-        <!--<link rel="stylesheet" href="style.css">-->
-        <!--<script src="main.js"></script>-->
-    </head>
-    <body>        
-        <h1>tp3 AW</h1>
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <!--body {
+            background-color: #e9ebee;
+            font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
+            font-size: 16px;
+            margin: 0 auto;
+            max-width: 800px;
+        }-->
+
+    <style>
+        label {
+            width: 150px;
+            display: inline-block;
+        }
+
+        input {
+            width: 250px;
+            padding: 6px 12px;
+            border-radius: 5px;
+            border: 1px solid gray;
+            font-size: 1rem;
+            box-sizing: border-box;
+            /* pour s'assurer que les margin/padding n'impacte pas la largeur width */
+        }
+
+        form {
+            background-color: white;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+        }
+
+        .container {
+            background: rgb(170, 159, 159);
+            text-align: center;
+        }
+
+        input {
+
+            font-size: 1em;
+            /* Taille de caractère de 1em */
+            border-radius: 5px;
+            /* Bordure arrondie de 5px */
+            padding: 6px 12px;
+            /* Padding de 6px en hauteur et 12px en largeur */
+        }
+
+        .btn-primary {
+            border-radius: 5px;
+            padding: 6px 12px;
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        form:invalid input[type="submit"] {
+            background-color: gray;
+        }
+
+        input:invalid {
+
+
+            border: 2px solid red;
+            /* Applique une bordure rouge aux champs invalides */
+        }
+
+        input:invalid+.icon-ok {
+            display: none;
+        }
+
+        input:valid+.icon-ok {
+            display: inline-block;
+        }
+    </style>
+
+    <link rel="stylesheet" href="CSS/bootstrap.css">
+    <script src="JS/bootstrap.bundle.js"></script>
+    <script src="JS/from-validation.js" defer></script>
+
+
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Seance 2 : tp 2/ tp3</h1>
         <h1>Formulaire d'inscription</h1>
-    <!-- le serveur -->
-    <form action="action.html" method="get">
+        <!-- le serveur -->
+        <form action="" id="monFormulaire" onsubmit="return validerFormulaire()" method="post" novalidate>
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" minlength="2" maxlength="20" required> <span
+                class="icon-ok">✔</span><br><br>
 
-        <label for="name">Nom :</label>
-        <input type="text" id="name" name="name" minlength="2" maxlength="20" required>    <span class="icon-ok">✔</span><br><br>
+            <label for="firstname">Prénom :</label>
+            <input type="text" id="firstname" name="firstname" minlength="2" maxlength="20" required> <span
+                class="icon-ok">✔</span><br><br>
 
-        <label for="firstname">Prénom :</label>
-        <input type="text" id="firstname" name="firstname" minlength="2" maxlength="20" required>  <span class="icon-ok">✔</span><br><br>
+            <label for="birthday">Date de naissance :</label>
+            <input type="date" id="birthday" name="birthday" required> <span class="icon-ok">✔</span><br><br>
 
-        <label for="birthday">Date de naissance :</label>
-        <input type="date" id="birthday" name="birthday" required>    <span class="icon-ok">✔</span><br><br>
+            <label for="address">Adresse postale :</label>
+            <input type="text" id="address" name="address" minlength="5" maxlength="50" required> <span
+                class="icon-ok">✔</span><br><br>
 
-        <label for="address">Adresse postale :</label>
-        <input type="text" id="address" name="address" minlength="5" maxlength="50" required>    <span class="icon-ok">✔</span><br><br>
+            <label for="email">Adresse e-mail :</label>
+            <input type="email" id="email" name="email" minlength="5" maxlength="30" required> <span
+                class="icon-ok">✔</span><br><br>
 
-        <label for="email">Adresse e-mail :</label>
-        <input type="email" id="email" name="email" minlength="5" maxlength="30" required>    <span class="icon-ok">✔</span><br><br>
+            <input type="submit" id="submit" class="btn-primary" value="Valider">
+        </form>
 
-        <input type="submit" class="btn-primary" value="Valider">
-    </form>
-        <!-- Add your site or application content here -->
-        <!--<p>Hello world! This is HTML5 Boilerplate.</p>
-        <img src="../galilee.png" alt="Logo Galilee"/>->
-    </body>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Erreur</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title2" id="exampleModalLabel">Erreur</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body2"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title3" id="exampleModalLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body3"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">OK</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
