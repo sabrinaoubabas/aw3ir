@@ -1,33 +1,162 @@
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>TP4</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en">
 
-        <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        <!-- Place favicon.ico in the root directory -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TP4</title>
 
-        <style>
-          body{
-              background-color: #e9ebee;              
-              font-family: system, -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif;
-              font-size: 16px;
-              margin: 0 auto;
-              max-width: 800px;              
-          }
-        </style>
-        
-        <!-- Code à dé-commenter si besoin de fichier CSS ou JS -->
-        <!--<link rel="stylesheet" href="style.css">-->
-        <!--<script src="main.js"></script>-->
-    </head>
-    <body>        
-        <h1>TP4</h1>
-        <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-        <img src="../galilee.png" alt="Logo Galilee"/>
-    </body>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Your custom scripts -->
+    <script src="JS/from-validation.js"></script>
+    <script src="JS/gps.js"></script>
+    <script src="JS/store.js"></script>
+
+
+    <style>
+        body {
+            background-color: #e9ebee;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background-color: #fff;
+            border-radius: 16px;
+            padding: 16px;
+            box-shadow: 0 2px 1px -1px #0003, 0 1px 1px #00000024, 0 1px 3px #0000001f;
+            margin-top: 20px;
+        }
+
+        label {
+            width: 150px;
+            display: inline-block;
+        }
+
+        input {
+            width: 100%;
+            padding: 6px 12px;
+            border-radius: 5px;
+            border: 1px solid gray;
+            font-size: 1rem;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .btn-primary {
+            border-radius: 5px;
+            padding: 6px 12px;
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 class="text-center mb-4">Seance 4 : tp4</h1>
+        <h2 class="text-center mb-4">Formulaire d'inscription avec géolocalisation</h2>
+
+        <form action="" id="monFormulaire" onsubmit="return validerFormulaire()" method="post" novalidate>
+            <!--
+            <div class="form-group">
+                <label for="name">Nom</label>
+                <input type="text" class="form-control" id="name" onkeyup="calcNbChar(id)" required>
+                <span id="span-name"></span>
+            </div>
+-->
+            <div class="row mb-3">
+                <label for="name" class="col-sm-2 col-form-label">Nom</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="name" onkeyup="calcNbChar(id)" />
+                </div>
+                <div class="col-sm-1"> <span id="span-name"></span> <!-- balise mise à jour dynamiquement en JS -->
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="firstname" class="col-sm-2 col-form-label">prénom</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="firstname" onkeyup="calcNbChar(id)" />
+                </div>
+                <div class="col-sm-1"><span id="span-firstname"></span>
+                    <!-- balise mise à jour dynamiquement en JS -->
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="birthday" class="col-sm-2 col-form-label"> date de naissance </label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="birthday" onkeyup="calcNbChar(this.id)" />
+
+                </div>
+                <div class="col-sm-1"> <span id="span-birthday"></span>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="address" class="col-sm-2 col-form-label"> adresse postale </label>
+                <div class="col-sm-9">
+                    <input type="text" id="address" name="address" class="form-control" onkeyup="calcNbChar(id)" />
+                    <button type="sumbit" id="mapButton" class="btn btn-primary" onclick="return false">Obtenir
+                        la localisation</button>
+                    <div id="map" class="col-sm-12"></div>
+
+                </div>
+                <div class="col-sm-1"><span id="span-address"></span> <!-- balise mise à jour dynamiquement en JS -->
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <label for="email" class="col-sm-2 col-form-label">Adresse mail </label>
+                <div class="col-sm-9">
+                    <input type="email" class="form-control" id="email" onkeyup="calcNbChar(id)" />
+
+                </div>
+                <div class="col-sm-1"> <span id="span-email"></span>
+                </div>
+            </div>
+
+            <button type="submit" id="submit" class="btn btn-primary">Ajouter</button><br><br>
+            <button type="button" class="btn btn-primary " onclick="resetForm()">Reset</button>
+        </form>
+
+        <div id="message" class="mt-3"></div>
+        <br><br>
+        <div>
+            <h4 id="contactCounter"></h4>
+        </div>
+        <table class="table table-striped table-bordered mt-4">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Date</th>
+                    <th>Adresse</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
+    </div>
+
+
+</body>
+
 </html>
